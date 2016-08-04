@@ -6,3 +6,4 @@ var userSchema = mongoose.Schema({
 });
 
 module.exports = mongoose.modle('User', userSchema);
+
