@@ -5,5 +5,8 @@ var userSchema = mongoose.Schema({
   message: String
 });
 
-module.exports = mongoose.modle('User', userSchema);
+// animalSchema.statics.findByName = function(name, cb) {
+//   return this.find({ name: new RegExp(name, 'i') }, cb);
+// };
+module.exports = mongoose.model('User', userSchema);
 
