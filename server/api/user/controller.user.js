@@ -11,7 +11,7 @@ UserController.prototype.getUsers = function(req, res) {
       } else {
         resolve(users);
       }
-    })
+    });
   }).then(function(users) {
     res.status(200).json(users);
   }).catch(function(error) {
@@ -28,12 +28,12 @@ UserController.prototype.getUser = function(req, res) {
       } else {
         resolve(user);
       }
-    }).then(function(user) {
+    });
+  }).then(function(user) {
       res.status(200).json(user);
     }).catch(function(error) {
       console.log(error);
     });
-  });
 }
 
 UserController.prototype.createUser = function(req, res) {
@@ -48,12 +48,12 @@ UserController.prototype.createUser = function(req, res) {
       } else {
         resolve(user);
       }
-    }).then(function(user) {
+    });
+  }).then(function(user) {
       res.status(201).json(user);
     }).catch(function(error) {
       console.log(error);
     });
-  });
 }
 
 UserController.prototype.editUser = function(req, res) {
@@ -66,7 +66,8 @@ UserController.prototype.editUser = function(req, res) {
       } else {
         resolve(user);
       }
-    }).then(function(user) {
+    });
+  }).then(function(user) {
       user.name = req.body.name;
       user.message = req.body.message;
       user.save(function(err, user) {
@@ -80,7 +81,6 @@ UserController.prototype.editUser = function(req, res) {
     }).catch(function(error) {
       console.log(error);
     });
-  });
 }
 
 UserController.prototype.removeUser = function(req, res) {
@@ -91,11 +91,11 @@ UserController.prototype.removeUser = function(req, res) {
       } else {
         resolve(user);
       }
-    }).then(function(user) {
-      res.status(200);
+    })
+  }).then(function(user) {
+      res.status(204).end();
     }).catch(function(error) {
       console.log(error);
-    });
   });
 }
 
