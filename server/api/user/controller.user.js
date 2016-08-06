@@ -1,4 +1,5 @@
 var User = require('./model.user');
+var mongoose = require('mongoose');
 
 function UserController() {}
 
@@ -20,10 +21,11 @@ UserController.prototype.getUsers = function(req, res) {
 
 UserController.prototype.createUser = function(req, res) {
   return new Promise(function(resolve, reject) {
-    User.create({
+    var newUser = {
       name: req.body.name,
       message: req.body.message
-    }, function(error, user) {
+    };
+    User.create(newUser, function(error, user) {
       if(error) {
         reject(error);
       } else {
@@ -39,7 +41,9 @@ UserController.prototype.createUser = function(req, res) {
 
 UserController.prototype.editUser = function(req, res) {
   return new Promise(function(resolve, reject) {
-    User.findOne({ name: req.body.name }, function(error, user) {
+    var _id = { _id: req.params.id };
+    console.log(req.body);
+    User.findOneAndUpdate(_id, function(error, user) {
       if(error) {
         reject(error);
       } else {
@@ -58,7 +62,7 @@ UserController.prototype.editUser = function(req, res) {
 
 UserController.prototype.removeUser = function(req, res) {
   return new Promise(function(resolve, reject) {
-    User.remove({ name: req.body.name }, function(error, user) {
+    User.findOneAndRemove({ _id: req.params.id }, function(error, user) {
       if(error) {
         reject(error);
       } else {

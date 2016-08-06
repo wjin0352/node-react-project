@@ -4,7 +4,7 @@ var controller = require('./controller.user');
 
 router.get('/', controller.getUsers)
   .post('/', controller.createUser)
-  .put('/', controller.editUser)
-  .delete('/', controller.removeUser)
+  .put('/:id', controller.editUser)
+  .delete('/:id', controller.removeUser)
 
 module.exports = router;
