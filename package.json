@@ -6,9 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "mkdir": "mkdir -p build",
-    "build": "npm run clean && npm run mkdir && npm run build:html",
+    "build": "npm run clean && npm run mkdir && npm run build:html && npm run build:css",
+    "watch": "npm run watch:html & npm run watch:css",
+
     "clean": "rm -rf build",
-    "build:html": "npm run clean:html && cp index.html build/",
+    "build:html": "npm run clean:html && cp public/index.html build/",
+    "build:css": "npm run clean:css && lessc --source-map public/css/index.less build/$npm_package_name.$npm_package_version.css",
+    "watch:css": "npm run build:css && chokidar 'css/**/*.less' -c 'npm run build:css'",
+    "clean:css": "rm -f build/$npm_package_name.$npm_package_version.css build/$npm_package_name.$npm_package_version.css.map",
+    "watch:html": "npm run build:html && chokidar index.html -c 'npm run build:html'",
     "clean:html": "rm -f build/index.html"
   },
   "author": "won",
@@ -24,6 +30,8 @@
     "react-dom": "^15.3.0"
   },
   "devDependencies": {
-    "babel-preset-react": "^6.11.1"
+    "babel-preset-react": "^6.11.1",
+    "chokidar-cli": "^1.2.0",
+    "less": "^2.7.1"
   }
 }
