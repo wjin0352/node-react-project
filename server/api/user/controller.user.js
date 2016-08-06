@@ -19,6 +19,23 @@ UserController.prototype.getUsers = function(req, res) {
   });
 }
 
+UserController.prototype.getUser = function(req, res) {
+  return new Promise(function(resolve, reject) {
+    var user_id = { _id: req.params.id };
+    User.findOne(user_id, function(error, user) {
+      if(error) {
+        reject(error);
+      } else {
+        resolve(user);
+      }
+    }).then(function(user) {
+      res.status(200).json(user);
+    }).catch(function(error) {
+      console.log(error);
+    });
+  });
+}
+
 UserController.prototype.createUser = function(req, res) {
   return new Promise(function(resolve, reject) {
     var newUser = {
