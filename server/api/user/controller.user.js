@@ -69,7 +69,13 @@ UserController.prototype.editUser = function(req, res) {
     }).then(function(user) {
       user.name = req.body.name;
       user.message = req.body.message;
-      user.save();
+      user.save(function(err, user) {
+        if(err) {
+          console.log(err);
+        } else {
+          console.log('successful edit' + user);
+        }
+      });
       res.status(204).json(user);
     }).catch(function(error) {
       console.log(error);
