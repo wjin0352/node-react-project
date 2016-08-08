@@ -13,11 +13,12 @@ module.exports = {
     path: path.resolve(__dirname, 'public'),
     filename: "[name].js",
   },
+  watch: true,
   devtool: 'source-map',
   module: {
     loaders: [
       {
-        test: /\.jsx$/,
+        test: /\.jsx?$/,
         exclude: /(node_modules)/,
         loader: 'babel',
         query: {

@@ -44,13 +44,14 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+	
 	// being compressed by webpack allows me to use require statement like this was a node file.
 	var $ = __webpack_require__(1);
 	
-	$(document).ready(function(){
+	$(document).ready(function () {
 	  $('#app').append('<li>' + 'hello' + '</li>');
 	});
-
 
 /***/ },
 /* 1 */
