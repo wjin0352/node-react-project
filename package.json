@@ -2,11 +2,11 @@
   "name": "node_react_project",
   "version": "1.0.0",
   "description": "",
-  "main": "server/server.js",
+  "main": "public/app.js",
   "scripts": {
     "build:js": "npm run clean:js && webpack",
     "watch:js": "npm run build:js && webpack --watch",
-    "clean:js": "rm -f build/$npm_package_name.$npm_package_version.js build/$npm_package_name.$npm_package_version.js.map"
+    "clean:js": "rm -f public/$npm_package_name.$npm_package_version.js public/$npm_package_name.$npm_package_version.js.map"
   },
   "author": "won",
   "license": "ISC",
@@ -18,7 +18,8 @@
     "mongoose": "^4.5.8",
     "nodemon": "^1.10.0",
     "react": "^15.3.0",
-    "react-dom": "^15.3.0"
+    "react-dom": "^15.3.0",
+    "react-router": "^2.6.1"
   },
   "devDependencies": {
     "babel-core": "^6.13.2",
