@@ -4,10 +4,14 @@ var packageData = require('./package.json');
 var filename = [packageData.name, packageData.version, 'js'];
 
 module.exports = {
-  entry: path.resolve(__dirname, packageData.main),
+  entry:
+    {
+      "client": packageData.main,
+      "react": "./react/index.js"
+    },
   output: {
     path: path.resolve(__dirname, 'public'),
-    filename: filename.join('.'),
+    filename: "[name].js",
   },
   devtool: 'source-map',
   module: {

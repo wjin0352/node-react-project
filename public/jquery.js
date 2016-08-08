@@ -44,10 +44,11 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
+	// being compressed by webpack allows me to use require statement like this was a node file.
 	var $ = __webpack_require__(1);
 	
 	$(document).ready(function(){
-	  $('#app').append('<li>' + 'hello' + '</li>');
+	  // $('#app').append('<li>' + 'hello' + '</li>');
 	});
 
 
@@ -10133,4 +10134,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=node_react_project.1.0.0.js.map
+//# sourceMappingURL=jquery.js.map
