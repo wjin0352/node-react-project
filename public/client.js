@@ -50,7 +50,7 @@
 	var $ = __webpack_require__(1);
 	
 	$(document).ready(function () {
-	  $('#app').append('<li>' + 'hello' + '</li>');
+	  // $('#app').append('<li>' + 'hello' + '</li>');
 	});
 
 /***/ },

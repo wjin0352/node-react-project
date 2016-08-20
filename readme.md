@@ -10,11 +10,13 @@ There should be routes created for all crud actions
 
 Twitch API
 
-  The user should see a list of twitch streamers on the main page (both online and offline)
+  Initially the user should see a list of twitch streamers on the main page (both online and offline)
 
   The user should be able to click on a button to show active streamers
 
   The user should be able to click on a button to show offline streamers
+
+  The user should be able to click on a button to show all streamers
 
   If the user is streaming online, the user should be able to see detailed information about what the user is streaming.
 

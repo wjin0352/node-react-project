@@ -52,7 +52,6 @@
 	var Router = router.Router;
 	var Route = router.Route;
 	var browserHistory = router.browserHistory;
-	// var User = require('../server/api/user/model.user')
 	
 	var App = function App() {
 	
@@ -62,7 +61,7 @@
 	    React.createElement(
 	      'h3',
 	      null,
-	      'React node app'
+	      'Twitch channels'
 	    )
 	  );
 	};

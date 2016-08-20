@@ -4,13 +4,12 @@ var router = require('react-router');
 var Router = router.Router;
 var Route = router.Route;
 var browserHistory = router.browserHistory;
-// var User = require('../server/api/user/model.user')
 
 var App = function() {
 
   return (
     <div className="app-container">
-      <h3>React node app</h3>
+      <h3>Twitch channels</h3>
     </div>
   );
 }

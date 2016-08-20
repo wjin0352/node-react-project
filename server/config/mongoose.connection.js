@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 var config = require('./variables.express');
-// mongoose.Promise = global.Promise;
 mongoose.connect(config.MONGODB.URI);
 
 
