@@ -1,19 +1,23 @@
-var actions = require('../actions/userActions')
+const combineReducers = require('redux').combineReducers;
+const actions = require('../actions/userActions');
 
-var  initialState = [];
+const initialState = [];
 
-// reducer function takes 2 arguments, current state and an action
-var usersReducer = function(state, action) {
+const usersReducer = function(state, action) {
   state = state || initialState;
-  // inside the reducer you should construct an object that will be the new state.
-  // the returned value will replace the state of your application. everytime  a new action is dispatched the reducer is run again, updating state as needed.
   if (action.type === actions.SHOW_USERS) {
-    return state.concat({
-      name: action.repository,
-      content: null
-    });
+    const results = state.map(function(user) {
+      return (
+        user
+      );
+    })
   }
   return state;
 };
 
-exports.usersReducer = usersReducer;
+// to combine all your reducers into one
+const reducer = combineReducers({
+  users: usersReducer
+});
+
+exports.reducer = reducer;

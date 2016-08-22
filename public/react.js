@@ -48,6 +48,7 @@
 	
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(35);
+	var connect = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"react-redux\""); e.code = 'MODULE_NOT_FOUND'; throw e; }())).connect;
 	var router = __webpack_require__(175);
 	var Router = router.Router;
 	var Route = router.Route;
@@ -61,15 +62,27 @@
 	var Header = __webpack_require__(238);
 	var UsersContainer = __webpack_require__(239);
 	var UserData = __webpack_require__(240);
+	var Provider = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"react-redux\""); e.code = 'MODULE_NOT_FOUND'; throw e; }())).Provider;
+	var store = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../stores/store\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	
+	var mapStateToProps = function mapStateToProps(state, props) {
+	  return {
+	    data: state
+	  };
+	};
 	
 	var App = React.createClass({
 	  displayName: 'App',
 	  render: function render(props) {
 	    return React.createElement(
-	      'div',
-	      { className: 'app-container' },
-	      React.createElement(Header, null),
-	      this.props.children
+	      Provider,
+	      { store: store },
+	      React.createElement(
+	        'div',
+	        { className: 'app-container' },
+	        React.createElement(Header, null),
+	        this.props.children
+	      )
 	    );
 	  }
 	});
@@ -27198,9 +27211,17 @@
 	'use strict';
 	
 	var React = __webpack_require__(1);
+	var _React$PropTypes = React.PropTypes;
+	var array = _React$PropTypes.array;
+	var string = _React$PropTypes.string;
+	
 	
 	var UserData = React.createClass({
 	  displayName: 'UserData',
+	
+	  propTypes: {
+	    data: array
+	  },
 	  render: function render(props) {
 	    var result = this.props.data.map(function (user) {
 	      return React.createElement(

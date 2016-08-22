@@ -218,4 +218,4 @@ module.exports = [{
         catchPhrase: "Centralized empowering task-force",
         bs: "target end-to-end models"
     }
-}]
+}];

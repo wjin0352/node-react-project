@@ -1,14 +1,14 @@
-var User = require('../../server/api/user/controller.user');
+const data = require('../../react/components/data');
 
-var SHOW_USERS = 'SHOW_USERS';
-var showUsers =  function(content) {
+const SHOW_USERS = 'SHOW_USERS';
+const show_users = function(data) {
+  console.log(data);
   return {
     type: SHOW_USERS,
-    content: content
+    data: data
   };
 };
 
-var action = showUsers(User.getUsers)
 exports.SHOW_USERS = SHOW_USERS;
-
-
+exports.show_users = show_users;
+exports.data = data;
