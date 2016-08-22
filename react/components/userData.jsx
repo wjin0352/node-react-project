@@ -17,7 +17,6 @@ const UserData = React.createClass({
             </div>
             );
   });
-    console.log(result);
     return (
       <div>
         <ul>

@@ -28,4 +28,6 @@ body {
   padding: 30px 10px;
   border: .01em solid grey;
   list-style-type: none;
+  margin: 10px;
+  border-radius: 10px;
 }

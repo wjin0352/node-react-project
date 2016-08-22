@@ -27269,7 +27269,6 @@
 	        )
 	      );
 	    });
-	    console.log(result);
 	    return React.createElement(
 	      'div',
 	      null,
