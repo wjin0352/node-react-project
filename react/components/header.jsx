@@ -6,10 +6,13 @@ const Header = React.createClass({
     return (
       <header className='header'>
         <h2 className='header-click'>
-          <Link to='/'>
-            Back to main
-          </Link>
+          react redux app
         </h2>
+        <ul className='header-tabs'>
+          <li><Link to='/'>Home</Link></li>
+          <li><Link to='/users'>Show Users Info</Link></li>
+          <li><Link to='/users'>About</Link></li>
+        </ul>
         <hr/>
       </header>
     )
