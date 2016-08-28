@@ -1,14 +1,17 @@
-const React = require('react');
-const connect = require('react-redux').connect;
-const UserData = require('./userData');
-const { Link } = require('react-router');
-const { connector } = require('../../redux/stores/store');
-const bindActionCreators = require('redux').bindActionCreators;
-const data = require('./data');
-const actions = require('../../redux/actions/userACtions');
+import React from 'react';
+import store from '../../redux/stores/store';
+import { Link } from 'react-router';
+import { connector } from '../../redux/stores/store';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import data from './data';
+import actions from '../../redux/actions/userActions';
+import UserData from './userData';
 
 const UsersContainer = React.createClass({
-  render (props) {
+
+  render () {
+    console.log(this.props);
     return (
       <div>
         <Link to='/'>
@@ -16,17 +19,17 @@ const UsersContainer = React.createClass({
         </Link>
         <div className='show-users-list' >
           <ul>
-            <UserData data={data} />
+            <UserData data={this.props.users} />
           </ul>
         </div>
       </div>
     )
   }
-})
+});
 
 const mapStateToProps = function(state) {
   return {
-    usersData: state
+    users: state
   };
 };
 

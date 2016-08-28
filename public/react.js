@@ -46,64 +46,83 @@
 
 	'use strict';
 	
-	var React = __webpack_require__(1);
-	var ReactDOM = __webpack_require__(35);
-	var router = __webpack_require__(175);
-	var Router = router.Router;
-	var Route = router.Route;
+	var _react = __webpack_require__(1);
 	
-	var _require = __webpack_require__(175);
+	var _react2 = _interopRequireDefault(_react);
 	
-	var IndexRoute = _require.IndexRoute;
-	var Link = _require.Link;
+	var _reactDom = __webpack_require__(35);
 	
-	var browserHistory = router.browserHistory;
-	var Header = __webpack_require__(238);
-	var UsersContainer = __webpack_require__(239);
-	var UserData = __webpack_require__(240);
-	var connect = __webpack_require__(241).connect;
-	var Provider = __webpack_require__(241).Provider;
-	var store = __webpack_require__(262);
+	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var mapStateToProps = function mapStateToProps(state, props) {
-	  return {
-	    data: state
-	  };
-	};
+	var _reactRouter = __webpack_require__(175);
 	
-	var App = React.createClass({
-	  displayName: 'App',
+	var _userActions = __webpack_require__(238);
+	
+	var _userActions2 = _interopRequireDefault(_userActions);
+	
+	var _data = __webpack_require__(239);
+	
+	var _data2 = _interopRequireDefault(_data);
+	
+	var _reactRedux = __webpack_require__(240);
+	
+	var _store = __webpack_require__(261);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _Header = __webpack_require__(264);
+	
+	var _Header2 = _interopRequireDefault(_Header);
+	
+	var _usersContainer = __webpack_require__(265);
+	
+	var _usersContainer2 = _interopRequireDefault(_usersContainer);
+	
+	var _userData = __webpack_require__(266);
+	
+	var _userData2 = _interopRequireDefault(_userData);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Main = _react2.default.createClass({
+	  displayName: 'Main',
 	  render: function render(props) {
-	    return React.createElement(
+	    return _react2.default.createElement(
 	      'div',
 	      { className: 'app-container' },
-	      React.createElement(Header, null),
+	      _react2.default.createElement(_Header2.default, null),
 	      this.props.children
 	    );
 	  }
 	});
 	
-	var routes = React.createElement(
-	  Provider,
-	  { store: store },
-	  React.createElement(
-	    Router,
-	    { history: browserHistory },
-	    React.createElement(
-	      Route,
-	      { path: '/', component: App },
-	      React.createElement(
-	        Route,
-	        { path: '/users', component: UsersContainer },
-	        React.createElement(IndexRoute, { component: UserData })
+	var routes = _react2.default.createElement(
+	  _reactRedux.Provider,
+	  { store: _store2.default },
+	  _react2.default.createElement(
+	    _reactRouter.Router,
+	    { history: _reactRouter.browserHistory },
+	    _react2.default.createElement(
+	      _reactRouter.Route,
+	      { path: '/', component: Main },
+	      _react2.default.createElement(
+	        _reactRouter.Route,
+	        { path: '/users', component: _usersContainer2.default },
+	        _react2.default.createElement(_reactRouter.IndexRoute, { component: _userData2.default })
 	      )
 	    )
 	  )
 	);
 	
+	// store.dispatch(actions.show_users(data));
+	// if you used mapdispatchtoprops you can refreence this as below
+	// this.props.show_users(data);
+	
 	document.addEventListener('DOMContentLoaded', function () {
-	  ReactDOM.render(routes, document.getElementById('app'));
+	  _reactDom2.default.render(routes, document.getElementById('app'));
 	});
+	
+	module.exports = Main;
 
 /***/ },
 /* 1 */
@@ -27107,121 +27126,248 @@
 
 	'use strict';
 	
-	var React = __webpack_require__(1);
+	var data = __webpack_require__(239);
 	
-	var _require = __webpack_require__(175);
-	
-	var Link = _require.Link;
-	
-	
-	var Header = React.createClass({
-	  displayName: 'Header',
-	  render: function render() {
-	    return React.createElement(
-	      'header',
-	      { className: 'header' },
-	      React.createElement(
-	        'h2',
-	        { className: 'header-click' },
-	        'react redux app'
-	      ),
-	      React.createElement(
-	        'ul',
-	        { className: 'header-tabs' },
-	        React.createElement(
-	          'li',
-	          null,
-	          React.createElement(
-	            Link,
-	            { to: '/' },
-	            'Home'
-	          )
-	        ),
-	        React.createElement(
-	          'li',
-	          null,
-	          React.createElement(
-	            Link,
-	            { to: '/users' },
-	            'Show Users Info'
-	          )
-	        ),
-	        React.createElement(
-	          'li',
-	          null,
-	          React.createElement(
-	            Link,
-	            { to: '/users' },
-	            'About'
-	          )
-	        )
-	      ),
-	      React.createElement('hr', null)
-	    );
-	  }
-	});
-	
-	module.exports = Header;
-
-/***/ },
-/* 239 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var React = __webpack_require__(1);
-	var connect = __webpack_require__(241).connect;
-	var UserData = __webpack_require__(240);
-	
-	var _require = __webpack_require__(175);
-	
-	var Link = _require.Link;
-	
-	var _require2 = __webpack_require__(262);
-	
-	var connector = _require2.connector;
-	
-	var bindActionCreators = __webpack_require__(248).bindActionCreators;
-	var data = __webpack_require__(265);
-	var actions = __webpack_require__(266);
-	
-	var UsersContainer = React.createClass({
-	  displayName: 'UsersContainer',
-	  render: function render(props) {
-	    return React.createElement(
-	      'div',
-	      null,
-	      React.createElement(
-	        Link,
-	        { to: '/' },
-	        'Back to main'
-	      ),
-	      React.createElement(
-	        'div',
-	        { className: 'show-users-list' },
-	        React.createElement(
-	          'ul',
-	          null,
-	          React.createElement(UserData, { data: data })
-	        )
-	      )
-	    );
-	  }
-	});
-	
-	var mapStateToProps = function mapStateToProps(state) {
+	var SHOW_USERS = 'SHOW_USERS';
+	var show_users = function show_users(data) {
+	  console.log(data);
 	  return {
-	    usersData: state
+	    type: SHOW_USERS,
+	    data: data
 	  };
 	};
 	
-	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-	  return bindActionCreators(actions, dispatch);
-	};
+	exports.SHOW_USERS = SHOW_USERS;
+	exports.show_users = show_users;
+	exports.data = data;
+
+/***/ },
+/* 239 */
+/***/ function(module, exports) {
+
+	"use strict";
 	
-	var Container = connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
-	
-	module.exports = Container;
+	module.exports = [{
+	    id: 1,
+	    name: "Leanne Graham",
+	    username: "Bret",
+	    email: "Sincere@april.biz",
+	    address: {
+	        street: "Kulas Light",
+	        suite: "Apt. 556",
+	        city: "Gwenborough",
+	        zipcode: "92998-3874",
+	        geo: {
+	            lat: "-37.3159",
+	            lng: "81.1496"
+	        }
+	    },
+	    phone: "1-770-736-8031 x56442",
+	    website: "hildegard.org",
+	    company: {
+	        name: "Romaguera-Crona",
+	        catchPhrase: "Multi-layered client-server neural-net",
+	        bs: "harness real-time e-markets"
+	    }
+	}, {
+	    id: 2,
+	    name: "Ervin Howell",
+	    username: "Antonette",
+	    email: "Shanna@melissa.tv",
+	    address: {
+	        street: "Victor Plains",
+	        suite: "Suite 879",
+	        city: "Wisokyburgh",
+	        zipcode: "90566-7771",
+	        geo: {
+	            lat: "-43.9509",
+	            lng: "-34.4618"
+	        }
+	    },
+	    phone: "010-692-6593 x09125",
+	    website: "anastasia.net",
+	    company: {
+	        name: "Deckow-Crist",
+	        catchPhrase: "Proactive didactic contingency",
+	        bs: "synergize scalable supply-chains"
+	    }
+	}, {
+	    id: 3,
+	    name: "Clementine Bauch",
+	    username: "Samantha",
+	    email: "Nathan@yesenia.net",
+	    address: {
+	        street: "Douglas Extension",
+	        suite: "Suite 847",
+	        city: "McKenziehaven",
+	        zipcode: "59590-4157",
+	        geo: {
+	            lat: "-68.6102",
+	            lng: "-47.0653"
+	        }
+	    },
+	    phone: "1-463-123-4447",
+	    website: "ramiro.info",
+	    company: {
+	        name: "Romaguera-Jacobson",
+	        catchPhrase: "Face to face bifurcated interface",
+	        bs: "e-enable strategic applications"
+	    }
+	}, {
+	    id: 4,
+	    name: "Patricia Lebsack",
+	    username: "Karianne",
+	    email: "Julianne.OConner@kory.org",
+	    address: {
+	        street: "Hoeger Mall",
+	        suite: "Apt. 692",
+	        city: "South Elvis",
+	        zipcode: "53919-4257",
+	        geo: {
+	            lat: "29.4572",
+	            lng: "-164.2990"
+	        }
+	    },
+	    phone: "493-170-9623 x156",
+	    website: "kale.biz",
+	    company: {
+	        name: "Robel-Corkery",
+	        catchPhrase: "Multi-tiered zero tolerance productivity",
+	        bs: "transition cutting-edge web services"
+	    }
+	}, {
+	    id: 5,
+	    name: "Chelsey Dietrich",
+	    username: "Kamren",
+	    email: "Lucio_Hettinger@annie.ca",
+	    address: {
+	        street: "Skiles Walks",
+	        suite: "Suite 351",
+	        city: "Roscoeview",
+	        zipcode: "33263",
+	        geo: {
+	            lat: "-31.8129",
+	            lng: "62.5342"
+	        }
+	    },
+	    phone: "(254)954-1289",
+	    website: "demarco.info",
+	    company: {
+	        name: "Keebler LLC",
+	        catchPhrase: "User-centric fault-tolerant solution",
+	        bs: "revolutionize end-to-end systems"
+	    }
+	}, {
+	    id: 6,
+	    name: "Mrs. Dennis Schulist",
+	    username: "Leopoldo_Corkery",
+	    email: "Karley_Dach@jasper.info",
+	    address: {
+	        street: "Norberto Crossing",
+	        suite: "Apt. 950",
+	        city: "South Christy",
+	        zipcode: "23505-1337",
+	        geo: {
+	            lat: "-71.4197",
+	            lng: "71.7478"
+	        }
+	    },
+	    phone: "1-477-935-8478 x6430",
+	    website: "ola.org",
+	    company: {
+	        name: "Considine-Lockman",
+	        catchPhrase: "Synchronised bottom-line interface",
+	        bs: "e-enable innovative applications"
+	    }
+	}, {
+	    id: 7,
+	    name: "Kurtis Weissnat",
+	    username: "Elwyn.Skiles",
+	    email: "Telly.Hoeger@billy.biz",
+	    address: {
+	        street: "Rex Trail",
+	        suite: "Suite 280",
+	        city: "Howemouth",
+	        zipcode: "58804-1099",
+	        geo: {
+	            lat: "24.8918",
+	            lng: "21.8984"
+	        }
+	    },
+	    phone: "210.067.6132",
+	    website: "elvis.io",
+	    company: {
+	        name: "Johns Group",
+	        catchPhrase: "Configurable multimedia task-force",
+	        bs: "generate enterprise e-tailers"
+	    }
+	}, {
+	    id: 8,
+	    name: "Nicholas Runolfsdottir V",
+	    username: "Maxime_Nienow",
+	    email: "Sherwood@rosamond.me",
+	    address: {
+	        street: "Ellsworth Summit",
+	        suite: "Suite 729",
+	        city: "Aliyaview",
+	        zipcode: "45169",
+	        geo: {
+	            lat: "-14.3990",
+	            lng: "-120.7677"
+	        }
+	    },
+	    phone: "586.493.6943 x140",
+	    website: "jacynthe.com",
+	    company: {
+	        name: "Abernathy Group",
+	        catchPhrase: "Implemented secondary concept",
+	        bs: "e-enable extensible e-tailers"
+	    }
+	}, {
+	    id: 9,
+	    name: "Glenna Reichert",
+	    username: "Delphine",
+	    email: "Chaim_McDermott@dana.io",
+	    address: {
+	        street: "Dayna Park",
+	        suite: "Suite 449",
+	        city: "Bartholomebury",
+	        zipcode: "76495-3109",
+	        geo: {
+	            lat: "24.6463",
+	            lng: "-168.8889"
+	        }
+	    },
+	    phone: "(775)976-6794 x41206",
+	    website: "conrad.com",
+	    company: {
+	        name: "Yost and Sons",
+	        catchPhrase: "Switchable contextually-based project",
+	        bs: "aggregate real-time technologies"
+	    }
+	}, {
+	    id: 10,
+	    name: "Clementina DuBuque",
+	    username: "Moriah.Stanton",
+	    email: "Rey.Padberg@karina.biz",
+	    address: {
+	        street: "Kattie Turnpike",
+	        suite: "Suite 198",
+	        city: "Lebsackbury",
+	        zipcode: "31428-2261",
+	        geo: {
+	            lat: "-38.2386",
+	            lng: "57.2232"
+	        }
+	    },
+	    phone: "024-648-3804",
+	    website: "ambrose.net",
+	    company: {
+	        name: "Hoeger LLC",
+	        catchPhrase: "Centralized empowering task-force",
+	        bs: "target end-to-end models"
+	    }
+	}];
 
 /***/ },
 /* 240 */
@@ -27229,114 +27375,14 @@
 
 	'use strict';
 	
-	var React = __webpack_require__(1);
-	var _React$PropTypes = React.PropTypes;
-	var array = _React$PropTypes.array;
-	var string = _React$PropTypes.string;
-	
-	
-	var UserData = React.createClass({
-	  displayName: 'UserData',
-	
-	  propTypes: {
-	    data: array
-	  },
-	  render: function render(props) {
-	    var result = this.props.data.map(function (user) {
-	      return React.createElement(
-	        'div',
-	        { key: user.id, className: 'user-data' },
-	        React.createElement(
-	          'li',
-	          null,
-	          ' ',
-	          user.name
-	        ),
-	        React.createElement(
-	          'li',
-	          null,
-	          'username: ',
-	          user.username
-	        ),
-	        React.createElement(
-	          'li',
-	          null,
-	          'email: ',
-	          user.email,
-	          ' '
-	        ),
-	        React.createElement(
-	          'li',
-	          null,
-	          'street: ',
-	          user.address.street,
-	          ' '
-	        ),
-	        React.createElement(
-	          'li',
-	          null,
-	          'suite: ',
-	          user.address.suite,
-	          ' '
-	        ),
-	        React.createElement(
-	          'li',
-	          null,
-	          'city: ',
-	          user.address.city,
-	          ' '
-	        ),
-	        React.createElement(
-	          'li',
-	          null,
-	          'zipcode: ',
-	          user.address.zipcode,
-	          ' '
-	        ),
-	        React.createElement(
-	          'li',
-	          null,
-	          'lat:  ',
-	          user.address.geo.lat,
-	          ' '
-	        ),
-	        React.createElement(
-	          'li',
-	          null,
-	          'lng:  ',
-	          user.address.geo.lng,
-	          ' '
-	        )
-	      );
-	    });
-	    return React.createElement(
-	      'div',
-	      null,
-	      React.createElement(
-	        'ul',
-	        null,
-	        result
-	      )
-	    );
-	  }
-	});
-	
-	module.exports = UserData;
-
-/***/ },
-/* 241 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
 	exports.__esModule = true;
 	exports.connect = exports.Provider = undefined;
 	
-	var _Provider = __webpack_require__(242);
+	var _Provider = __webpack_require__(241);
 	
 	var _Provider2 = _interopRequireDefault(_Provider);
 	
-	var _connect = __webpack_require__(245);
+	var _connect = __webpack_require__(244);
 	
 	var _connect2 = _interopRequireDefault(_connect);
 	
@@ -27346,7 +27392,7 @@
 	exports.connect = _connect2["default"];
 
 /***/ },
-/* 242 */
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -27356,11 +27402,11 @@
 	
 	var _react = __webpack_require__(1);
 	
-	var _storeShape = __webpack_require__(243);
+	var _storeShape = __webpack_require__(242);
 	
 	var _storeShape2 = _interopRequireDefault(_storeShape);
 	
-	var _warning = __webpack_require__(244);
+	var _warning = __webpack_require__(243);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -27430,7 +27476,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 243 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27446,7 +27492,7 @@
 	});
 
 /***/ },
-/* 244 */
+/* 243 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -27475,7 +27521,7 @@
 	}
 
 /***/ },
-/* 245 */
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -27487,23 +27533,23 @@
 	
 	var _react = __webpack_require__(1);
 	
-	var _storeShape = __webpack_require__(243);
+	var _storeShape = __webpack_require__(242);
 	
 	var _storeShape2 = _interopRequireDefault(_storeShape);
 	
-	var _shallowEqual = __webpack_require__(246);
+	var _shallowEqual = __webpack_require__(245);
 	
 	var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
 	
-	var _wrapActionCreators = __webpack_require__(247);
+	var _wrapActionCreators = __webpack_require__(246);
 	
 	var _wrapActionCreators2 = _interopRequireDefault(_wrapActionCreators);
 	
-	var _warning = __webpack_require__(244);
+	var _warning = __webpack_require__(243);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
-	var _isPlainObject = __webpack_require__(250);
+	var _isPlainObject = __webpack_require__(249);
 	
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 	
@@ -27874,7 +27920,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 246 */
+/* 245 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -27905,7 +27951,7 @@
 	}
 
 /***/ },
-/* 247 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27913,7 +27959,7 @@
 	exports.__esModule = true;
 	exports["default"] = wrapActionCreators;
 	
-	var _redux = __webpack_require__(248);
+	var _redux = __webpack_require__(247);
 	
 	function wrapActionCreators(actionCreators) {
 	  return function (dispatch) {
@@ -27922,7 +27968,7 @@
 	}
 
 /***/ },
-/* 248 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -27930,27 +27976,27 @@
 	exports.__esModule = true;
 	exports.compose = exports.applyMiddleware = exports.bindActionCreators = exports.combineReducers = exports.createStore = undefined;
 	
-	var _createStore = __webpack_require__(249);
+	var _createStore = __webpack_require__(248);
 	
 	var _createStore2 = _interopRequireDefault(_createStore);
 	
-	var _combineReducers = __webpack_require__(257);
+	var _combineReducers = __webpack_require__(256);
 	
 	var _combineReducers2 = _interopRequireDefault(_combineReducers);
 	
-	var _bindActionCreators = __webpack_require__(259);
+	var _bindActionCreators = __webpack_require__(258);
 	
 	var _bindActionCreators2 = _interopRequireDefault(_bindActionCreators);
 	
-	var _applyMiddleware = __webpack_require__(260);
+	var _applyMiddleware = __webpack_require__(259);
 	
 	var _applyMiddleware2 = _interopRequireDefault(_applyMiddleware);
 	
-	var _compose = __webpack_require__(261);
+	var _compose = __webpack_require__(260);
 	
 	var _compose2 = _interopRequireDefault(_compose);
 	
-	var _warning = __webpack_require__(258);
+	var _warning = __webpack_require__(257);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -27974,7 +28020,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 249 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27983,11 +28029,11 @@
 	exports.ActionTypes = undefined;
 	exports["default"] = createStore;
 	
-	var _isPlainObject = __webpack_require__(250);
+	var _isPlainObject = __webpack_require__(249);
 	
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 	
-	var _symbolObservable = __webpack_require__(255);
+	var _symbolObservable = __webpack_require__(254);
 	
 	var _symbolObservable2 = _interopRequireDefault(_symbolObservable);
 	
@@ -28241,12 +28287,12 @@
 	}
 
 /***/ },
-/* 250 */
+/* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getPrototype = __webpack_require__(251),
-	    isHostObject = __webpack_require__(253),
-	    isObjectLike = __webpack_require__(254);
+	var getPrototype = __webpack_require__(250),
+	    isHostObject = __webpack_require__(252),
+	    isObjectLike = __webpack_require__(253);
 	
 	/** `Object#toString` result references. */
 	var objectTag = '[object Object]';
@@ -28317,10 +28363,10 @@
 
 
 /***/ },
-/* 251 */
+/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var overArg = __webpack_require__(252);
+	var overArg = __webpack_require__(251);
 	
 	/** Built-in value references. */
 	var getPrototype = overArg(Object.getPrototypeOf, Object);
@@ -28329,7 +28375,7 @@
 
 
 /***/ },
-/* 252 */
+/* 251 */
 /***/ function(module, exports) {
 
 	/**
@@ -28350,7 +28396,7 @@
 
 
 /***/ },
-/* 253 */
+/* 252 */
 /***/ function(module, exports) {
 
 	/**
@@ -28376,7 +28422,7 @@
 
 
 /***/ },
-/* 254 */
+/* 253 */
 /***/ function(module, exports) {
 
 	/**
@@ -28411,18 +28457,18 @@
 
 
 /***/ },
-/* 255 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/* global window */
 	'use strict';
 	
-	module.exports = __webpack_require__(256)(global || window || this);
+	module.exports = __webpack_require__(255)(global || window || this);
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 256 */
+/* 255 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -28447,7 +28493,7 @@
 
 
 /***/ },
-/* 257 */
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -28455,13 +28501,13 @@
 	exports.__esModule = true;
 	exports["default"] = combineReducers;
 	
-	var _createStore = __webpack_require__(249);
+	var _createStore = __webpack_require__(248);
 	
-	var _isPlainObject = __webpack_require__(250);
+	var _isPlainObject = __webpack_require__(249);
 	
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 	
-	var _warning = __webpack_require__(258);
+	var _warning = __webpack_require__(257);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -28580,7 +28626,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 258 */
+/* 257 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -28610,7 +28656,7 @@
 	}
 
 /***/ },
-/* 259 */
+/* 258 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -28666,7 +28712,7 @@
 	}
 
 /***/ },
-/* 260 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28677,7 +28723,7 @@
 	
 	exports["default"] = applyMiddleware;
 	
-	var _compose = __webpack_require__(261);
+	var _compose = __webpack_require__(260);
 	
 	var _compose2 = _interopRequireDefault(_compose);
 	
@@ -28729,7 +28775,7 @@
 	}
 
 /***/ },
-/* 261 */
+/* 260 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -28774,19 +28820,63 @@
 	}
 
 /***/ },
+/* 261 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _redux = __webpack_require__(247);
+	
+	var _redux2 = _interopRequireDefault(_redux);
+	
+	var _store = __webpack_require__(261);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _reducersIndex = __webpack_require__(262);
+	
+	var _reducersIndex2 = _interopRequireDefault(_reducersIndex);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	// const store = createStore(reducers.usersReducer, data);
+	var store = (0, _redux.createStore)(_reducersIndex2.default);
+	
+	exports.default = store;
+
+/***/ },
 /* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var redux = __webpack_require__(248);
-	var createStore = redux.createStore;
-	var data = __webpack_require__(262);
-	var reducers = __webpack_require__(263);
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 	
-	var store = createStore(reducers.reducer, data);
+	var _redux = __webpack_require__(247);
 	
-	module.exports = store;
+	var _userActions = __webpack_require__(238);
+	
+	var _userActions2 = _interopRequireDefault(_userActions);
+	
+	var _userReducer = __webpack_require__(263);
+	
+	var _userReducer2 = _interopRequireDefault(_userReducer);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	// to combine all your reducers into one
+	var allReducers = (0, _redux.combineReducers)({
+	  users: _userReducer2.default
+	});
+	
+	// exports.allReducers = allReducers;
+	exports.default = allReducers;
 
 /***/ },
 /* 263 */
@@ -28794,27 +28884,29 @@
 
 	'use strict';
 	
-	var combineReducers = __webpack_require__(248).combineReducers;
-	var actions = __webpack_require__(264);
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var combineReducers = __webpack_require__(247).combineReducers;
+	var actions = __webpack_require__(238);
 	
 	var initialState = [];
 	
 	var usersReducer = function usersReducer(state, action) {
 	  state = state || initialState;
 	  if (action.type === actions.SHOW_USERS) {
-	    var results = state.map(function (user) {
-	      return user;
-	    });
+	    return action.data;
 	  }
 	  return state;
 	};
 	
 	// to combine all your reducers into one
-	var reducer = combineReducers({
-	  users: usersReducer
-	});
+	// const reducer = combineReducers({
+	//   users: usersReducer
+	// });
 	
-	exports.reducer = reducer;
+	// exports.reducer = reducer;
+	exports.default = usersReducer;
 
 /***/ },
 /* 264 */
@@ -28822,248 +28914,135 @@
 
 	'use strict';
 	
-	var data = __webpack_require__(265);
+	var _react = __webpack_require__(1);
 	
-	var SHOW_USERS = 'SHOW_USERS';
-	var show_users = function show_users(data) {
-	  console.log(data);
-	  return {
-	    type: SHOW_USERS,
-	    data: data
-	  };
-	};
+	var _react2 = _interopRequireDefault(_react);
 	
-	exports.SHOW_USERS = SHOW_USERS;
-	exports.show_users = show_users;
-	exports.data = data;
+	var _reactRouter = __webpack_require__(175);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Header = _react2.default.createClass({
+	  displayName: 'Header',
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'header',
+	      { className: 'header' },
+	      _react2.default.createElement(
+	        'h2',
+	        { className: 'header-click' },
+	        'react redux app'
+	      ),
+	      _react2.default.createElement(
+	        'ul',
+	        { className: 'header-tabs' },
+	        _react2.default.createElement(
+	          'li',
+	          null,
+	          _react2.default.createElement(
+	            _reactRouter.Link,
+	            { to: '/' },
+	            'Home'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          null,
+	          _react2.default.createElement(
+	            _reactRouter.Link,
+	            { to: '/users' },
+	            'Show Users Info'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          null,
+	          _react2.default.createElement(
+	            _reactRouter.Link,
+	            { to: '/users' },
+	            'About'
+	          )
+	        )
+	      ),
+	      _react2.default.createElement('hr', null)
+	    );
+	  }
+	});
+	
+	module.exports = Header;
 
 /***/ },
 /* 265 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
-	module.exports = [{
-	    id: 1,
-	    name: "Leanne Graham",
-	    username: "Bret",
-	    email: "Sincere@april.biz",
-	    address: {
-	        street: "Kulas Light",
-	        suite: "Apt. 556",
-	        city: "Gwenborough",
-	        zipcode: "92998-3874",
-	        geo: {
-	            lat: "-37.3159",
-	            lng: "81.1496"
-	        }
-	    },
-	    phone: "1-770-736-8031 x56442",
-	    website: "hildegard.org",
-	    company: {
-	        name: "Romaguera-Crona",
-	        catchPhrase: "Multi-layered client-server neural-net",
-	        bs: "harness real-time e-markets"
-	    }
-	}, {
-	    id: 2,
-	    name: "Ervin Howell",
-	    username: "Antonette",
-	    email: "Shanna@melissa.tv",
-	    address: {
-	        street: "Victor Plains",
-	        suite: "Suite 879",
-	        city: "Wisokyburgh",
-	        zipcode: "90566-7771",
-	        geo: {
-	            lat: "-43.9509",
-	            lng: "-34.4618"
-	        }
-	    },
-	    phone: "010-692-6593 x09125",
-	    website: "anastasia.net",
-	    company: {
-	        name: "Deckow-Crist",
-	        catchPhrase: "Proactive didactic contingency",
-	        bs: "synergize scalable supply-chains"
-	    }
-	}, {
-	    id: 3,
-	    name: "Clementine Bauch",
-	    username: "Samantha",
-	    email: "Nathan@yesenia.net",
-	    address: {
-	        street: "Douglas Extension",
-	        suite: "Suite 847",
-	        city: "McKenziehaven",
-	        zipcode: "59590-4157",
-	        geo: {
-	            lat: "-68.6102",
-	            lng: "-47.0653"
-	        }
-	    },
-	    phone: "1-463-123-4447",
-	    website: "ramiro.info",
-	    company: {
-	        name: "Romaguera-Jacobson",
-	        catchPhrase: "Face to face bifurcated interface",
-	        bs: "e-enable strategic applications"
-	    }
-	}, {
-	    id: 4,
-	    name: "Patricia Lebsack",
-	    username: "Karianne",
-	    email: "Julianne.OConner@kory.org",
-	    address: {
-	        street: "Hoeger Mall",
-	        suite: "Apt. 692",
-	        city: "South Elvis",
-	        zipcode: "53919-4257",
-	        geo: {
-	            lat: "29.4572",
-	            lng: "-164.2990"
-	        }
-	    },
-	    phone: "493-170-9623 x156",
-	    website: "kale.biz",
-	    company: {
-	        name: "Robel-Corkery",
-	        catchPhrase: "Multi-tiered zero tolerance productivity",
-	        bs: "transition cutting-edge web services"
-	    }
-	}, {
-	    id: 5,
-	    name: "Chelsey Dietrich",
-	    username: "Kamren",
-	    email: "Lucio_Hettinger@annie.ca",
-	    address: {
-	        street: "Skiles Walks",
-	        suite: "Suite 351",
-	        city: "Roscoeview",
-	        zipcode: "33263",
-	        geo: {
-	            lat: "-31.8129",
-	            lng: "62.5342"
-	        }
-	    },
-	    phone: "(254)954-1289",
-	    website: "demarco.info",
-	    company: {
-	        name: "Keebler LLC",
-	        catchPhrase: "User-centric fault-tolerant solution",
-	        bs: "revolutionize end-to-end systems"
-	    }
-	}, {
-	    id: 6,
-	    name: "Mrs. Dennis Schulist",
-	    username: "Leopoldo_Corkery",
-	    email: "Karley_Dach@jasper.info",
-	    address: {
-	        street: "Norberto Crossing",
-	        suite: "Apt. 950",
-	        city: "South Christy",
-	        zipcode: "23505-1337",
-	        geo: {
-	            lat: "-71.4197",
-	            lng: "71.7478"
-	        }
-	    },
-	    phone: "1-477-935-8478 x6430",
-	    website: "ola.org",
-	    company: {
-	        name: "Considine-Lockman",
-	        catchPhrase: "Synchronised bottom-line interface",
-	        bs: "e-enable innovative applications"
-	    }
-	}, {
-	    id: 7,
-	    name: "Kurtis Weissnat",
-	    username: "Elwyn.Skiles",
-	    email: "Telly.Hoeger@billy.biz",
-	    address: {
-	        street: "Rex Trail",
-	        suite: "Suite 280",
-	        city: "Howemouth",
-	        zipcode: "58804-1099",
-	        geo: {
-	            lat: "24.8918",
-	            lng: "21.8984"
-	        }
-	    },
-	    phone: "210.067.6132",
-	    website: "elvis.io",
-	    company: {
-	        name: "Johns Group",
-	        catchPhrase: "Configurable multimedia task-force",
-	        bs: "generate enterprise e-tailers"
-	    }
-	}, {
-	    id: 8,
-	    name: "Nicholas Runolfsdottir V",
-	    username: "Maxime_Nienow",
-	    email: "Sherwood@rosamond.me",
-	    address: {
-	        street: "Ellsworth Summit",
-	        suite: "Suite 729",
-	        city: "Aliyaview",
-	        zipcode: "45169",
-	        geo: {
-	            lat: "-14.3990",
-	            lng: "-120.7677"
-	        }
-	    },
-	    phone: "586.493.6943 x140",
-	    website: "jacynthe.com",
-	    company: {
-	        name: "Abernathy Group",
-	        catchPhrase: "Implemented secondary concept",
-	        bs: "e-enable extensible e-tailers"
-	    }
-	}, {
-	    id: 9,
-	    name: "Glenna Reichert",
-	    username: "Delphine",
-	    email: "Chaim_McDermott@dana.io",
-	    address: {
-	        street: "Dayna Park",
-	        suite: "Suite 449",
-	        city: "Bartholomebury",
-	        zipcode: "76495-3109",
-	        geo: {
-	            lat: "24.6463",
-	            lng: "-168.8889"
-	        }
-	    },
-	    phone: "(775)976-6794 x41206",
-	    website: "conrad.com",
-	    company: {
-	        name: "Yost and Sons",
-	        catchPhrase: "Switchable contextually-based project",
-	        bs: "aggregate real-time technologies"
-	    }
-	}, {
-	    id: 10,
-	    name: "Clementina DuBuque",
-	    username: "Moriah.Stanton",
-	    email: "Rey.Padberg@karina.biz",
-	    address: {
-	        street: "Kattie Turnpike",
-	        suite: "Suite 198",
-	        city: "Lebsackbury",
-	        zipcode: "31428-2261",
-	        geo: {
-	            lat: "-38.2386",
-	            lng: "57.2232"
-	        }
-	    },
-	    phone: "024-648-3804",
-	    website: "ambrose.net",
-	    company: {
-	        name: "Hoeger LLC",
-	        catchPhrase: "Centralized empowering task-force",
-	        bs: "target end-to-end models"
-	    }
-	}];
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _store = __webpack_require__(261);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _reactRouter = __webpack_require__(175);
+	
+	var _redux = __webpack_require__(247);
+	
+	var _reactRedux = __webpack_require__(240);
+	
+	var _data = __webpack_require__(239);
+	
+	var _data2 = _interopRequireDefault(_data);
+	
+	var _userActions = __webpack_require__(238);
+	
+	var _userActions2 = _interopRequireDefault(_userActions);
+	
+	var _userData = __webpack_require__(266);
+	
+	var _userData2 = _interopRequireDefault(_userData);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var UsersContainer = _react2.default.createClass({
+	  displayName: 'UsersContainer',
+	  render: function render() {
+	    console.log(this.props);
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        _reactRouter.Link,
+	        { to: '/' },
+	        'Back to main'
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'show-users-list' },
+	        _react2.default.createElement(
+	          'ul',
+	          null,
+	          _react2.default.createElement(_userData2.default, { data: this.props.users })
+	        )
+	      )
+	    );
+	  }
+	});
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    users: state
+	  };
+	};
+	
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+	  return (0, _redux.bindActionCreators)(_userActions2.default, dispatch);
+	};
+	
+	var Container = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(UsersContainer);
+	
+	module.exports = Container;
 
 /***/ },
 /* 266 */
@@ -29071,20 +29050,100 @@
 
 	'use strict';
 	
-	var data = __webpack_require__(265);
+	var _react = __webpack_require__(1);
 	
-	var SHOW_USERS = 'SHOW_USERS';
-	var show_users = function show_users(data) {
-	  console.log(data);
-	  return {
-	    type: SHOW_USERS,
-	    data: data
-	  };
-	};
+	var _react2 = _interopRequireDefault(_react);
 	
-	exports.SHOW_USERS = SHOW_USERS;
-	exports.show_users = show_users;
-	exports.data = data;
+	var _data = __webpack_require__(239);
+	
+	var _data2 = _interopRequireDefault(_data);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var UserData = _react2.default.createClass({
+	  displayName: 'UserData',
+	  render: function render(props) {
+	    console.log(this.props);
+	    var result = this.props.usersData.map(function (user) {
+	      return _react2.default.createElement(
+	        'div',
+	        { key: user.id, className: 'user-data' },
+	        _react2.default.createElement(
+	          'li',
+	          null,
+	          ' ',
+	          user.name
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          null,
+	          'username: ',
+	          user.username
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          null,
+	          'email: ',
+	          user.email,
+	          ' '
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          null,
+	          'street: ',
+	          user.address.street,
+	          ' '
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          null,
+	          'suite: ',
+	          user.address.suite,
+	          ' '
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          null,
+	          'city: ',
+	          user.address.city,
+	          ' '
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          null,
+	          'zipcode: ',
+	          user.address.zipcode,
+	          ' '
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          null,
+	          'lat:  ',
+	          user.address.geo.lat,
+	          ' '
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          null,
+	          'lng:  ',
+	          user.address.geo.lng,
+	          ' '
+	        )
+	      );
+	    });
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'ul',
+	        null,
+	        result
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = UserData;
 
 /***/ }
 /******/ ]);

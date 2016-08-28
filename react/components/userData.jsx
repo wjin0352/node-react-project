@@ -1,12 +1,12 @@
-const React = require('react');
-const { array, string } = React.PropTypes;
+import React from 'react';
+import { array, string } from 'react';
+import data from './data';
 
 const UserData = React.createClass({
-  propTypes: {
-    data: array
-  },
+
   render (props) {
-    var result = this.props.data.map(function(user) {
+    console.log(this.props);
+    var result = this.props.usersData.map(function(user) {
     return (
       <div key={user.id} className='user-data'>
         <li > {user.name}</li>

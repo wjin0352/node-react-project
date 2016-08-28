@@ -6,7 +6,7 @@ var filename = [packageData.name, packageData.version, 'js'];
 module.exports = {
   entry:
     {
-      "react": "./react/components/clientApp.jsx"
+      "react": "./react/containers/Main.jsx"
     },
   output: {
     path: path.resolve(__dirname, 'public'),
