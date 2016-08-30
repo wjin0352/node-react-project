@@ -27130,7 +27130,6 @@
 	
 	var SHOW_USERS = 'SHOW_USERS';
 	var show_users = function show_users(data) {
-	  console.log(data);
 	  return {
 	    type: SHOW_USERS,
 	    data: data
@@ -28833,18 +28832,19 @@
 	
 	var _redux2 = _interopRequireDefault(_redux);
 	
-	var _store = __webpack_require__(261);
-	
-	var _store2 = _interopRequireDefault(_store);
-	
 	var _reducersIndex = __webpack_require__(262);
 	
 	var _reducersIndex2 = _interopRequireDefault(_reducersIndex);
+	
+	var _userActions = __webpack_require__(238);
+	
+	var _userActions2 = _interopRequireDefault(_userActions);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	// const store = createStore(reducers.usersReducer, data);
 	var store = (0, _redux.createStore)(_reducersIndex2.default);
+	console.log(_userActions2.default);
 	
 	exports.default = store;
 
@@ -28884,29 +28884,23 @@
 
 	'use strict';
 	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var combineReducers = __webpack_require__(247).combineReducers;
-	var actions = __webpack_require__(238);
+	var _userActions = __webpack_require__(238);
 	
-	var initialState = [];
+	var _userActions2 = _interopRequireDefault(_userActions);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var initialState = _userActions2.default.data;
 	
 	var usersReducer = function usersReducer(state, action) {
 	  state = state || initialState;
-	  if (action.type === actions.SHOW_USERS) {
-	    return action.data;
+	  if (action.type === _userActions2.default.SHOW_USERS) {
+	    return _userActions2.default.data;
 	  }
 	  return state;
 	};
 	
-	// to combine all your reducers into one
-	// const reducer = combineReducers({
-	//   users: usersReducer
-	// });
-	
-	// exports.reducer = reducer;
-	exports.default = usersReducer;
+	module.exports = usersReducer;
 
 /***/ },
 /* 264 */
@@ -28977,6 +28971,10 @@
 
 	'use strict';
 	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
@@ -29008,7 +29006,8 @@
 	var UsersContainer = _react2.default.createClass({
 	  displayName: 'UsersContainer',
 	  render: function render() {
-	    console.log(this.props);
+	    // console.log(actions.data);
+	    console.log(this.props.users);
 	    return _react2.default.createElement(
 	      'div',
 	      null,
@@ -29031,8 +29030,9 @@
 	});
 	
 	var mapStateToProps = function mapStateToProps(state) {
+	  console.log(state);
 	  return {
-	    users: state
+	    users: state.users
 	  };
 	};
 	
@@ -29040,9 +29040,10 @@
 	  return (0, _redux.bindActionCreators)(_userActions2.default, dispatch);
 	};
 	
-	var Container = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(UsersContainer);
+	// const Container = connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+	// module.exports = Container;
 	
-	module.exports = Container;
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(UsersContainer);
 
 /***/ },
 /* 266 */
@@ -29054,17 +29055,13 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _data = __webpack_require__(239);
-	
-	var _data2 = _interopRequireDefault(_data);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var UserData = _react2.default.createClass({
 	  displayName: 'UserData',
 	  render: function render(props) {
-	    console.log(this.props);
-	    var result = this.props.usersData.map(function (user) {
+	    console.log(this.props.data);
+	    var result = this.props.data.map(function (user) {
 	      return _react2.default.createElement(
 	        'div',
 	        { key: user.id, className: 'user-data' },

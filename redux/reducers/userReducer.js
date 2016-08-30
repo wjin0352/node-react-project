@@ -1,20 +1,13 @@
-const combineReducers = require('redux').combineReducers;
-const actions = require('../actions/userActions');
+import actions from '../actions/userActions';
 
-const initialState = [];
+const initialState = actions.data;
 
 const usersReducer = function(state, action) {
   state = state || initialState;
   if (action.type === actions.SHOW_USERS) {
-    return action.data;
+    return actions.data;
   }
   return state;
 };
 
-// to combine all your reducers into one
-// const reducer = combineReducers({
-//   users: usersReducer
-// });
-
-// exports.reducer = reducer;
-export default usersReducer;
+module.exports = usersReducer;

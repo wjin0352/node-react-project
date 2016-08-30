@@ -11,7 +11,8 @@ import UserData from './userData';
 const UsersContainer = React.createClass({
 
   render () {
-    console.log(this.props);
+    // console.log(actions.data);
+    console.log(this.props.users);
     return (
       <div>
         <Link to='/'>
@@ -27,16 +28,18 @@ const UsersContainer = React.createClass({
   }
 });
 
-const mapStateToProps = function(state) {
+var mapStateToProps = function(state) {
+  console.log(state);
   return {
-    users: state
+    users: state.users
   };
 };
 
-const mapDispatchToProps = function(dispatch) {
+var mapDispatchToProps = function(dispatch) {
   return bindActionCreators(actions, dispatch);
 };
 
-const Container = connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+// const Container = connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+// module.exports = Container;
 
-module.exports = Container;
+export default connect(mapStateToProps)(UsersContainer);
